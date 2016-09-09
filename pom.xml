@@ -1,0 +1,153 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.longrise</groupId>
+  <artifactId>servicedemo</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>servicedemo Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+	<dependency>
+    <groupId>org.apache.oltu.oauth2</groupId>
+    <artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.5.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.4.5</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.oltu.oauth2</groupId>
+    <artifactId>org.apache.oltu.oauth2.httpclient4</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.oltu.oauth2</groupId>
+    <artifactId>org.apache.oltu.oauth2.dynamicreg.server</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.oltu.oauth2</groupId>
+    <artifactId>org.apache.oltu.oauth2.dynamicreg.common</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.oltu.oauth2</groupId>
+    <artifactId>org.apache.oltu.oauth2.dynamicreg.client</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.oltu.oauth2</groupId>
+    <artifactId>org.apache.oltu.oauth2.resourceserver</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<!--     <dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-rt-frontend-jaxws</artifactId>
+    <version>3.1.7</version>
+  </dependency> -->
+<!--     <dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-bundle-jaxrs</artifactId>
+    <version>2.7.18</version>
+</dependency> -->
+    <dependency>
+    <groupId>javax.ws.rs</groupId>
+    <artifactId>javax.ws.rs-api</artifactId>
+    <version>2.0.1</version>
+	</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.core</groupId>
+    <artifactId>jersey-server</artifactId>
+    <version>2.23.2</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.containers</groupId>
+    <artifactId>jersey-container-servlet</artifactId>
+    <version>2.23.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.3.2</version>
+</dependency>
+    <dependency>     
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>3.0.5.RELEASE</version> 
+ </dependency>
+ <dependency>     
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>3.0.5.RELEASE</version>
+ </dependency>
+ <dependency>     
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>3.0.5.RELEASE</version>
+ </dependency>
+ <dependency>     
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-test</artifactId>
+       <version>3.0.5.RELEASE</version>
+ </dependency>
+ <dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjrt</artifactId>
+    <version>1.6.11</version>
+ </dependency>
+ <dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.6.11</version>
+ </dependency>
+ 	<dependency>
+    <groupId>net.sf.json-lib</groupId>
+    <artifactId>json-lib</artifactId>
+    <version>2.4</version>
+    <classifier>jdk15</classifier>
+	</dependency>
+	<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+	<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.21</version>
+</dependency>
+	<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.21</version>
+</dependency>
+	<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+    <version>1.0.25</version>
+</dependency>
+	<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    <version>2.9.0</version>
+</dependency>
+	
+  </dependencies>
+  <build>
+    <finalName>servicedemo</finalName>
+  </build>
+</project>

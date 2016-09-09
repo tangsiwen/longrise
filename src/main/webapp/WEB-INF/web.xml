@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <servlet>
+  <servlet-name>JerseyServlet</servlet-name>
+  <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>  
+             <param-name>jersey.config.server.provider.packages</param-name>  
+             <param-value>com.longrise.endpoint</param-value>  
+        </init-param>
+        <init-param>  
+             <param-name>jersey.config.server.provider.classnames</param-name>  
+             <param-value>com.longrise.common.jersey.provider.JSONMessageBodyProvider</param-value>  
+        </init-param> 
+  <load-on-startup>4</load-on-startup>
+</servlet>
+<servlet-mapping>
+  <servlet-name>JerseyServlet</servlet-name>
+  <url-pattern>/restful/*</url-pattern>
+</servlet-mapping>
+  <servlet>
+    <servlet-name>DruidInit</servlet-name>
+    <servlet-class>com.longrise.common.db.druid.DruidInit</servlet-class>
+     <init-param>
+	  <param-name>DBConfig</param-name>
+	  <param-value>WEB-INF/db.xml</param-value>
+	</init-param>
+    <load-on-startup>3</load-on-startup><!--加这个标签，tomcat启动时会自动加载指定的servlet-->
+  </servlet>
+  <servlet>
+    <servlet-name>AopInit</servlet-name>
+    <servlet-class>com.longrise.common.init.AopInit</servlet-class>
+    <load-on-startup>2</load-on-startup><!--加这个标签，tomcat启动时会自动加载指定的servlet-->
+  </servlet>
+  <servlet>
+    <servlet-name>ServiceInit</servlet-name>
+    <servlet-class>com.longrise.common.init.ServiceInit</servlet-class>
+     <init-param>
+	  <param-name>ServiceClass</param-name>
+	  <param-value>WEB-INF/service.xml</param-value>
+	</init-param>
+    <load-on-startup>1</load-on-startup><!--加这个标签，tomcat启动时会自动加载指定的servlet-->
+  </servlet>
+  <servlet>
+    <servlet-name>LogInit</servlet-name>
+    <servlet-class>com.longrise.common.init.LogInit</servlet-class>
+     <init-param>
+	  <param-name>LogConfig</param-name>
+	  <param-value>WEB-INF/log4j.properties</param-value>
+	</init-param>
+    <load-on-startup>0</load-on-startup><!--加这个标签，tomcat启动时会自动加载指定的servlet-->
+    </servlet>
+  <display-name>servicedemo</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
