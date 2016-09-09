@@ -9,6 +9,7 @@ import org.springframework.aop.AfterReturningAdvice;
 import com.longrise.common.server.ServiceConfig;
 import com.longrise.common.server.ServiceInfo;
 import com.longrise.common.server.auth.BaseAuth;
+import com.longrise.common.server.auth.exception.GrantFailedException;
 import com.longrise.common.utils.FormatLog;
 
 public class AfterAdvice implements AfterReturningAdvice
@@ -33,6 +34,7 @@ public class AfterAdvice implements AfterReturningAdvice
                     grant.grant(args);
                 } else {
                     Log.info(method.getName() + "--授权失败");
+                    throw new GrantFailedException("授权失败");
                 }
             }
         }

@@ -1,6 +1,6 @@
 package com.longrise.common.server.auth.exception;
 
-public class GrantFailedException
+public class GrantFailedException extends Exception
 {
     /**
      * 授权失败原因

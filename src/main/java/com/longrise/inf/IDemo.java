@@ -10,8 +10,14 @@ import com.longrise.common.bean.PR;
 public interface IDemo
 {
     /**
-     * 授权接口演示
+     * 接口演示
      * @return
      */
     public PR Demo1(JSONObject json, HttpServletRequest request);
+    /**
+     * 登陆接口演示1
+     * @return
+     */
+    public PR Login1(JSONObject json, HttpServletRequest request);
+    public PR Demo2(JSONObject json, HttpServletRequest request);
 }
