@@ -2,6 +2,9 @@ package com.longrise.common.aop;
 
 import java.lang.reflect.Method;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.container.ContainerRequestContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.MethodBeforeAdvice;
@@ -12,7 +15,6 @@ import com.longrise.common.server.auth.BaseAuth;
 import com.longrise.common.server.auth.exception.AuthorizationFailedException;
 import com.longrise.common.utils.FormatLog;
 
-
 public class BeforeAdvice implements MethodBeforeAdvice
 {
     final Logger Log = LoggerFactory.getLogger(BeforeAdvice.class);
@@ -20,9 +22,21 @@ public class BeforeAdvice implements MethodBeforeAdvice
     {
         // 打印调用日志
         Log.info(FormatLog.format(String.format("%s准备调用", method.getName())));
-        ServiceConfig sc = ServiceInfo.getServiceInfo(method.getName());
-        boolean authorizer = sc.authorizer();
-        boolean stateless = sc.stateless();
+        ContainerRequestContext crc = null;
+        ServiceConfig sc = null;
+        boolean authorizer = false;
+        boolean stateless = false;
+        for(Object arg:args)
+        {
+            if("org.glassfish.jersey.server.ContainerRequest".equals(arg.getClass().getName()))
+                crc = (ContainerRequestContext)arg;
+        }
+        if(crc!=null)
+        {
+            sc = ServiceInfo.getServiceInfo((String)crc.getProperty("serviceName"));
+            authorizer = sc.authorizer();
+            stateless = sc.stateless();
+        }
         //boolean bool = false;
         if(authorizer)
         {

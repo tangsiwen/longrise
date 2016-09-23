@@ -63,7 +63,7 @@ public class QueryBean {
 	 * @param objects
 	 * @return
 	 */
-	public ResultBeanSet select(String sql, DataSource ds, Object[] objects) {
+	public ResultBeanSet select(String sql, DataSource ds, Object... objects) {
 		QueryRunner qr1 = new QueryRunner(ds);
 		List<Map<String, Object>> result = null;
 		ResultBeanSet rbSet = null;
@@ -74,12 +74,16 @@ public class QueryBean {
 			if (l > 0) {
 				cSql = sql.substring(0, l);
 			}
+			else
+			{
+			    cSql = sql;
+			}
 			cSql = cSql.substring(0, 6) + " count(*) " + cSql.substring(a.indexOf("from"), cSql.length());
 			ResultBean countBean = selectFristRow(cSql, ds, objects);
-			if (countBean.getInteger("count") > 0) {
+			if (countBean.getLong("count") > 0) {
 				result = qr1.query(sql, new MapListHandler(), objects);
 				rbSet = new ResultBeanSet(result);
-				rbSet.setAllSize(countBean.getInteger("count"));
+				rbSet.setAllSize(countBean.getLong("count"));
 				rbSet.setSize(result.size());
 			}
 		} catch (SQLException e) {

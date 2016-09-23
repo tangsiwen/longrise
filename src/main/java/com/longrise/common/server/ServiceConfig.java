@@ -12,8 +12,9 @@ import com.longrise.common.server.auth.SessionAuth;
 @Retention(RetentionPolicy.RUNTIME)  
 @Documented
 public @interface ServiceConfig{
-	public String logic();
+	//public String logic();
     public String version();
+    public String service();
     public boolean Monitored() default false;
     public boolean candidate() default false;
     public boolean stateless() default false;

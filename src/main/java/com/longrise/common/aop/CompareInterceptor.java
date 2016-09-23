@@ -12,7 +12,7 @@ public class CompareInterceptor implements MethodInterceptor
         /**获取http request**/
         result = invocation.proceed();
 
-        System.out.println("CompareInterceptor");
+        //System.out.println("CompareInterceptor");
 
         return result;
     }

@@ -2,6 +2,9 @@ package com.longrise.common.aop;
 
 import java.lang.reflect.Method;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.container.ContainerRequestContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.AfterReturningAdvice;
@@ -18,8 +21,23 @@ public class AfterAdvice implements AfterReturningAdvice
     public void afterReturning ( Object returnValue , Method method , Object[] args , Object target ) throws Throwable
     {
         Log.info(FormatLog.format(String.format("%s准备调用", method.getName())));
-        ServiceConfig sc = ServiceInfo.getServiceInfo(method.getName());
-        boolean authorizer = sc.authorizer();
+//        ServiceConfig sc = ServiceInfo.getServiceInfo(method.getName());
+//        boolean authorizer = sc.authorizer();
+        /************************/
+        ContainerRequestContext crc = null;
+        ServiceConfig sc = null;
+        boolean authorizer = false;
+        for(Object arg:args)
+        {
+            if("org.glassfish.jersey.server.ContainerRequest".equals(arg.getClass().getName()))
+                crc = (ContainerRequestContext)arg;
+        }
+        if(crc!=null)
+        {
+            sc = ServiceInfo.getServiceInfo((String)crc.getProperty("serviceName"));
+            authorizer = sc.authorizer();
+        }
+        /************************/
         if (authorizer) {
             // 授权
             Log.info(String.format("%s--开始授权", method.getName()));

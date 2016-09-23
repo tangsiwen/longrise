@@ -37,7 +37,9 @@ public class ResultBean {
 	public Integer getInteger(String key) {
 		return (Integer) result.get(key);
 	}
-
+    public Long getLong(String key) {
+        return (Long) result.get(key);
+    }
 	public Boolean getBoolean(String key) {
 		return (Boolean) result.get(key);
 	}

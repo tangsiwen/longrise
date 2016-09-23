@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 public class ResultBeanSet {
-	private int pageNum = 0;
-	private int pageSize = -1;
-	private int pageCount = 0;
-	private int size = 0;
-	private int allSize = 0;
+	private long pageNum = 0L;
+	private long pageSize = -1L;
+	private long pageCount = 0;
+	private long size = 0L;
+	private long allSize = 0L;
 
-	public int getAllSize() {
+	public long getAllSize() {
 		return allSize;
 	}
 
-	public void setAllSize(int allSize) {
+	public void setAllSize(long allSize) {
 		this.allSize = allSize;
 		if (pageCount == 0 && allSize > 0 && pageSize > 0) {
 			if (allSize <= pageSize) {
@@ -32,7 +32,7 @@ public class ResultBeanSet {
 
 	private List<Map<String, Object>> resultSet = null;
 
-	public int getPageNum() {
+	public long getPageNum() {
 		return pageNum;
 	}
 
@@ -40,7 +40,7 @@ public class ResultBeanSet {
 		this.pageNum = pageNum;
 	}
 
-	public int getPageSize() {
+	public long getPageSize() {
 		return pageSize;
 	}
 
@@ -59,7 +59,7 @@ public class ResultBeanSet {
 		}
 	}
 
-	public int getPageCount() {
+	public long getPageCount() {
 		if (pageCount == 0 && allSize > 0 && pageSize > 0) {
 			if (allSize <= pageSize) {
 				pageCount = 1;
@@ -78,7 +78,7 @@ public class ResultBeanSet {
 		this.pageCount = pageCount;
 	}
 
-	public int getSize() {
+	public long getSize() {
 		return size;
 	}
 

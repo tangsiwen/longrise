@@ -1,7 +1,9 @@
 package com.longrise.common.init;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -67,7 +69,8 @@ public class ServiceInit implements Servlet {
 			// 返回db对象用documentBuilderFatory对象获得返回documentBuildr对象
 			db = dbf.newDocumentBuilder();
 			// 得到一个DOM并返回给document对象
-			Document dt = db.parse(f);
+			InputStream is = new FileInputStream(f); 
+			Document dt = db.parse(is);
 			element = dt.getDocumentElement();
 			NodeList childNodes = element.getChildNodes();
 			// 遍历这些子节点

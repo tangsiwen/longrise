@@ -42,9 +42,10 @@ public class ServiceInfo {
 			String monitored = "";
 			String httpType = "";
 			String authorizer = "";
+			ServiceConfig bs = null;
 			if (method.isAnnotationPresent(ServiceConfig.class)) {
-				ServiceConfig bs = (ServiceConfig) method.getAnnotation(ServiceConfig.class);
-				name = bs.logic();
+			    bs = (ServiceConfig) method.getAnnotation(ServiceConfig.class);
+				name = bs.service();
 				serviceInfo.put(name, bs);
 				version = bs.version();
 				if (bs.stateless()) {
@@ -77,7 +78,8 @@ public class ServiceInfo {
 				path = p.value();
 			}
 			path = serviceRootPath+path;
-			String desc = String.format("检查到服务--服务路径：%s,服务方法：%s,版本：%s,服务类型：%s,%s,%s,%s,%s", path,name, version, httpType, stateless,
+			//serviceInfo.put(path, bs);
+			String desc = String.format("检查到服务--服务路径：%s,版本：%s,服务类型：%s,%s,%s,%s,%s", path, version, httpType, stateless,
 			        authMethod,authorizer,permitMethod, monitored);
 			Log.info(desc);
 		}
